@@ -61,4 +61,4 @@ namespace CoOp19API.Domain.Models
         public string Description { get; set; }
     }
 }
-}
+

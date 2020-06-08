@@ -1,11 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "6C04q9OKMXMozSHrKaPsojrFJnx/PeY2tSEI4Oi4CVHdFZB8yXnDNpGGn6j0fusR4VToN1YA7U3ZcwxxOPDfWQ==",
+  "dgSpecHash": "VgX1Kl1Uec9Y2fybFPb6FBWaS39Wy/MDN1lrz2pmanMjUrKBVhO10HHH+dt64rp6kcIYdf4vK6L+HzhrEt2ERQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\jbui4\\source\\repos\\CoOp19API\\CoOp19API.Test\\CoOp19API.Test.fsproj",
+  "projectFilePath": "C:\\Users\\jbui4\\source\\repos\\CoOp19API\\CoOp19API.Test\\CoOp19API.Test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jbui4\\.nuget\\packages\\coverlet.collector\\1.2.0\\coverlet.collector.1.2.0.nupkg.sha512",
-    "C:\\Users\\jbui4\\.nuget\\packages\\fsharp.core\\4.7.0\\fsharp.core.4.7.0.nupkg.sha512",
     "C:\\Users\\jbui4\\.nuget\\packages\\microsoft.codecoverage\\16.5.0\\microsoft.codecoverage.16.5.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.csharp\\4.0.1\\microsoft.csharp.4.0.1.nupkg.sha512",
     "C:\\Users\\jbui4\\.nuget\\packages\\microsoft.net.test.sdk\\16.5.0\\microsoft.net.test.sdk.16.5.0.nupkg.sha512",

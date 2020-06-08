@@ -15,5 +15,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CoOp19API.Domain\CoOp19API.Domain.csproj" />
+  </ItemGroup>
+
 
 </Project>

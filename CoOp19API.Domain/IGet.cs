@@ -7,7 +7,7 @@ using CoOp19API.Domain.Models;
 
 namespace CoOp19API.Domain
 {
-    interface IGet
+    public interface IGet
     {
         Task<ConsumableViewResource> Consumable(int id);
         Task<IEnumerable<ConsumableViewResource>> Consumables();

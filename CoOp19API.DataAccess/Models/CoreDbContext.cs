@@ -61,7 +61,7 @@ namespace CoOp19API.Models
 
                 entity.Property(e => e.Title).IsFixedLength();
 
-                entity.HasOne(d => d.IdNavigation)
+                entity.HasOne(d => d.Loc)
                     .WithOne(p => p.GenericResource)
                     .HasForeignKey<GenericResource>(d => d.Id)
                     .OnDelete(DeleteBehavior.ClientSetNull)
