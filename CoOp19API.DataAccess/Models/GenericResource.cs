@@ -25,7 +25,7 @@ namespace CoOp19API.Models
 
         [ForeignKey(nameof(Id))]
         [InverseProperty(nameof(MapData.GenericResource))]
-        public virtual MapData IdNavigation { get; set; }
+        public virtual MapData Loc { get; set; }
         [InverseProperty("Resource")]
         public virtual ICollection<ConsumableResource> ConsumableResource { get; set; }
         [InverseProperty("Resource")]

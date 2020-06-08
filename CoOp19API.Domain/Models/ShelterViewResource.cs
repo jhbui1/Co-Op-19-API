@@ -1,21 +1,22 @@
-﻿using System;
+﻿using CoOp19API.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-using CoOp19API.Models;
-
 namespace CoOp19API.Domain.Models
 {
-    public class ConsumableViewResource
+    public class ShelterViewResource
     {
-        public ConsumableViewResource() { }
-
-        public ConsumableViewResource(MapData map, GenericResource gen, ConsumableResource consumable) 
+        public ShelterViewResource() { }
+        public ShelterViewResource(
+            MapData map,
+            ShelterResource shelt,
+            GenericResource gen)
         {
-            ResourceId = gen.Id;
-            Id = consumable.Id;
-            Price = consumable.Price;
-            Quantity = consumable.Quantity;
+            Id = shelt.Id;
+            Vacancy = shelt.Vacancy;
+            Rating = shelt.Rating;
+            IsSafe = shelt.IsSafe;
             Gpsn = map.Gpsn;
             Gpsw = map.Gpsw;
             Address = map.Address;
@@ -24,37 +25,40 @@ namespace CoOp19API.Domain.Models
             Name = gen.Title;
             Description = gen.Comment;
         }
-        public ConsumableResource ToData()
+
+        public ShelterResource ToData()
         {
-            var map = new MapData()
+            var map = new MapData
             {
                 Gpsn = this.Gpsn,
                 Gpsw = this.Gpsw,
-                Address = this.Address,
                 City = this.City,
+                Address = this.Address,
                 State = this.State
             };
-            var gen = new GenericResource()
+            var gen = new GenericResource
             {
                 Title = this.Name,
                 Comment = this.Description,
                 Loc = map
             };
-            return new ConsumableResource
+            return new ShelterResource
             {
-                Price = this.Price,
-                Quantity = this.Quantity,
+                Vacancy = this.Vacancy,
+                Rating = this.Rating,
+                IsSafe = this.IsSafe,
                 Resource = gen
             };
         }
-        public int ResourceId { get; set; }
+
         public int Id { get; set; }
-        public decimal? Price { get; set; }
-        public int Quantity { get; set; }
+        public int Vacancy { get; set; }
+        public byte Rating { get; set; }
+        public bool IsSafe { get; set; }
         public decimal? Gpsn { get; set; }
         public decimal? Gpsw { get; set; }
-        public string Address { get; set; }
         public string City { get; set; }
+        public string Address { get; set; }
         public string State { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }

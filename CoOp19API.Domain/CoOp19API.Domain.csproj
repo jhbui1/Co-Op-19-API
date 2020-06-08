@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CoOp19API.DataAccess\CoOp19API.DataAccess.csproj" />
+  </ItemGroup>
+
 </Project>
