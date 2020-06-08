@@ -1,14 +1,17 @@
-﻿using System;
+﻿using CoOp19API.Models;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace CoOp19API.DataAccess
 {
     class Input
     {
-        private DB19Context context;
+        private CoreDbContext context;
 
-        public Input(DB19Context cont)
+        public Input(CoreDbContext cont)
         {
             context = cont;
         }
@@ -32,7 +35,7 @@ namespace CoOp19API.DataAccess
                 throw new Exception("Input",
                     new Exception($"New item is invalid: {E.Message}"));
             }
-            _ = await context.SaveChangesAsync();
+            await context.SaveChangesAsync();
             return output.Entity;
         }
     }
