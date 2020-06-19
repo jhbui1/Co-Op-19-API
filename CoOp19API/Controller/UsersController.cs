@@ -4,6 +4,7 @@ using CoOp19API.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace CoOp19.App.Controllers
@@ -85,11 +86,32 @@ namespace CoOp19.App.Controllers
         /// </summary>
         /// <param name="city">name of city</param>
         /// <returns>querryed list</returns>
-        [HttpGet("username/{U}")]
+        [HttpGet("username")]
         public async Task<ActionResult<IEnumerable<UsersView>>> GetActionUserName([FromServices] IGet get, string U)
         {
+            var re = Request;
+            var headers = re.Headers;
+            string token = string.Empty;
+            string pwd = string.Empty;
+            if (headers.ContainsKey("username"))
+            {
+                token = headers["username"].ToString();
+            }
+            if (headers.ContainsKey("password"))
+            {
+                pwd = headers["password"].ToString();
+            }
             log.LogInformation($"Querrying the database for a user with the username {U}");
-            return await TryTask<IEnumerable<UsersView>>.Run(async () => Ok(await get.Users(item => item.UserName.Trim() == U)));
+            var users = await TryTask<IEnumerable<UsersView>>.Run(async () => Ok(await get.Users(item => item.UserName.Trim() == token)));
+            if(BCryptHash.VerifyUser(users.Value, pwd))
+            {
+                return users;
+            }
+            else
+            {
+                return new ObjectResult("ERROR: Invalid username/password") { StatusCode = 400 };
+            }
+
         }
 
         /// <summary>

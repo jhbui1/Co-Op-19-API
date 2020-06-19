@@ -22,9 +22,7 @@ namespace CoOp19API.Models
         public decimal? TestPrice { get; set; }
 
         [ForeignKey(nameof(ResourceId))]
-        [InverseProperty(nameof(GenericResource.HealthResource))]
         public virtual GenericResource Resource { get; set; }
-        [InverseProperty("HealthResNavigation")]
         public virtual ICollection<HealthResourceServices> HealthResourceServices { get; set; }
     }
 }

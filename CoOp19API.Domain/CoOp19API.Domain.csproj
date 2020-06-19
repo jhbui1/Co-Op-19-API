@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="BCrypt-Official" Version="0.1.109" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CoOp19API.DataAccess\CoOp19API.DataAccess.csproj" />
   </ItemGroup>
 

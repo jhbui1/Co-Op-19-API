@@ -109,6 +109,12 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "BCrypt-Official": {
+              "target": "Package",
+              "version": "[0.1.109, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -154,6 +160,9 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
+              "C:\\Users\\jbui4\\source\\repos\\CoOp19API\\CoOp19API.DataAccess\\CoOp19API.DataAccess.csproj": {
+                "projectPath": "C:\\Users\\jbui4\\source\\repos\\CoOp19API\\CoOp19API.DataAccess\\CoOp19API.DataAccess.csproj"
+              },
               "C:\\Users\\jbui4\\source\\repos\\CoOp19API\\CoOp19API.Domain\\CoOp19API.Domain.csproj": {
                 "projectPath": "C:\\Users\\jbui4\\source\\repos\\CoOp19API\\CoOp19API.Domain\\CoOp19API.Domain.csproj"
               }
@@ -169,6 +178,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "BCrypt-Official": {
+              "target": "Package",
+              "version": "[0.1.109, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.4, )"

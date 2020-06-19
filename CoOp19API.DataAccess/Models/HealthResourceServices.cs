@@ -18,11 +18,11 @@ namespace CoOp19API.Models
         [StringLength(50)]
         public string ServiceDesc { get; set; }
         public int? AvgWaitHours { get; set; }
+        public int ResourceId { get; set; }
         [Column(TypeName = "money")]
         public decimal EstCost { get; set; }
 
         [ForeignKey(nameof(HealthRes))]
-        [InverseProperty(nameof(HealthResource.HealthResourceServices))]
         public virtual HealthResource HealthResNavigation { get; set; }
     }
 }

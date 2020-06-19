@@ -27,11 +27,8 @@ namespace CoOp19API.Models
         [StringLength(40)]
         public string State { get; set; }
 
-        [InverseProperty("IdNavigation")]
-        public virtual GenericResource GenericResource { get; set; }
-        [InverseProperty("Loc")]
+        public virtual ICollection<GenericResource> GenericResource { get; set; }
         public virtual ICollection<ConsumableResource> ConsumableResource { get; set; }
-        [InverseProperty("LocNavigation")]
         public virtual ICollection<Users> Users { get; set; }
     }
 }

@@ -1,14 +1,17 @@
-﻿using System;
+﻿using CoOp19API.Models;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace CoOp19API.DataAccess
 {
-    class Output
+    public class Output : IOutput
     {
-        private readonly DB19Context context;
+        private readonly CoreDbContext context;
 
-        public Output(DB19Context cont)
+        public Output(CoreDbContext cont)
         {
             context = cont;
         }

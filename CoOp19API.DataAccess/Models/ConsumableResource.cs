@@ -19,10 +19,8 @@ namespace CoOp19API.Models
         public int Quantity { get; set; }
 
         [ForeignKey(nameof(LocId))]
-        [InverseProperty(nameof(MapData.ConsumableResource))]
         public virtual MapData Loc { get; set; }
         [ForeignKey(nameof(ResourceId))]
-        [InverseProperty(nameof(GenericResource.ConsumableResource))]
         public virtual GenericResource Resource { get; set; }
     }
 }

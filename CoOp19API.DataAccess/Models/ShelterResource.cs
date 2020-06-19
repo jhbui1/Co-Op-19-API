@@ -17,7 +17,6 @@ namespace CoOp19API.Models
         public bool IsSafe { get; set; }
 
         [ForeignKey(nameof(ResourceId))]
-        [InverseProperty(nameof(GenericResource.ShelterResource))]
         public virtual GenericResource Resource { get; set; }
     }
 }

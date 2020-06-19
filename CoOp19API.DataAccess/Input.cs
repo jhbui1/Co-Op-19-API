@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CoOp19API.DataAccess
 {
-    class Input
+    public class Input : IInput
     {
         private CoreDbContext context;
 

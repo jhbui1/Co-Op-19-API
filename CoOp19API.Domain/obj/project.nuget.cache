@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Ua2UT3v0SEy19qcQyNH9tBQTTU8cCv8cmkGvxyRdWTvE3P20b+MP0f6CMWySjq2Wf7+fYhbLMrtAAM5kyjliPg==",
+  "dgSpecHash": "EJ6BC2hV/uA6Cc3ADTgMVC3DH6M2JpKws0l9wvahAQDgmZELnQ3iN5nefYFUcRAxpCOO0LczSrpN9LFX7NFt7Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\jbui4\\source\\repos\\CoOp19API\\CoOp19API.Domain\\CoOp19API.Domain.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\jbui4\\.nuget\\packages\\bcrypt-official\\0.1.109\\bcrypt-official.0.1.109.nupkg.sha512",
     "C:\\Users\\jbui4\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\jbui4\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
@@ -91,5 +92,16 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'BCrypt-Official 0.1.109' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "BCrypt-Official",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
 }

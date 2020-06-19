@@ -13,24 +13,20 @@ namespace CoOp19API.Models
             HealthResource = new HashSet<HealthResource>();
             ShelterResource = new HashSet<ShelterResource>();
         }
-
         [Key]
-        [Column("ID")]
+        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [Required]
         [StringLength(40)]
         public string Title { get; set; }
         [StringLength(500)]
         public string Comment { get; set; }
+        public int? LocId { get; set; }
 
         [ForeignKey(nameof(Id))]
-        [InverseProperty(nameof(MapData.GenericResource))]
         public virtual MapData Loc { get; set; }
-        [InverseProperty("Resource")]
         public virtual ICollection<ConsumableResource> ConsumableResource { get; set; }
-        [InverseProperty("Resource")]
         public virtual ICollection<HealthResource> HealthResource { get; set; }
-        [InverseProperty("Resource")]
         public virtual ICollection<ShelterResource> ShelterResource { get; set; }
     }
 }

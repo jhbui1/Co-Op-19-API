@@ -1,4 +1,5 @@
 ﻿using CoOp19API;
+using CoOp19API.Domain;
 using CoOp19API.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;

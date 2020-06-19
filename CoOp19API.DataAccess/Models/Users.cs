@@ -29,8 +29,10 @@ namespace CoOp19API.Models
         [StringLength(50)]
         public string Email { get; set; }
 
+        public bool IsAdmin { get; set; }
+        public string Salt { get; set; }
+
         [ForeignKey(nameof(Loc))]
-        [InverseProperty(nameof(MapData.Users))]
         public virtual MapData LocNavigation { get; set; }
     }
 }

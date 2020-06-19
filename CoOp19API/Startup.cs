@@ -1,21 +1,18 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using CoOp19API.Domain;
+using CoOp19API.DataAccess;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using CoOp19API.Models;
 
 namespace CoOp19API
 {
     public class Startup
     {
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -26,11 +23,29 @@ namespace CoOp19API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: MyAllowSpecificOrigins,
+                                builder =>
+                                {
+                                    builder.WithOrigins("https://co-op19.azurewebsites.net",
+                                                    "https://co-op19.azurewebsites.net/register",
+                                                    "http://localhost:4200/register",
+                                                    "http://localhost:4200"
+                                                    )
+                                                    .AllowAnyHeader()
+                                                    .AllowAnyMethod();
+                                });
+            });
+            services.AddTransient<IGet>(s=>new Get(new Output(new CoreDbContext(Configuration.GetConnectionString("DB19Context")))));
+            services.AddTransient<IPost>(s=>new Post(new Input(new CoreDbContext(Configuration.GetConnectionString("DB19Context")))));
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
             });
             services.AddControllers();
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,6 +58,10 @@ namespace CoOp19API
 
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
+
+            app.UseCors(c =>
+                c.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
+            ) ;
 
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
             // specifying the Swagger JSON endpoint.

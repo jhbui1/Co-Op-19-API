@@ -15,10 +15,12 @@ namespace CoOp19API.Domain.Models
             Loc = user.Loc;
             UserName = user.UserName.Trim();
             Password = user.Password.Trim();
+            Salt = user.Salt;
             Fname = user.Fname;
             Lname = user.Lname;
             Phone = user.Phone;
             Email = user.Email;
+            IsAdmin = user.IsAdmin;
             Gpsn = map.Gpsn;
             Gpsw = map.Gpsw;
             Address = map.Address;
@@ -37,14 +39,17 @@ namespace CoOp19API.Domain.Models
                 State = this.State
             };
 
+            string[] hashAndSalt = BCryptHash.HashPassword(this.Password);
             return new Users
             {
                 UserName = this.UserName,
-                Password = this.Password,
+                Password = hashAndSalt[0],
+                Salt = hashAndSalt[1],
                 Fname = this.Fname,
                 Lname = this.Lname,
                 Phone = this.Phone,
                 Email = this.Email,
+                IsAdmin = this.IsAdmin,
                 LocNavigation = map
             };
         }
@@ -53,6 +58,7 @@ namespace CoOp19API.Domain.Models
         public int? Loc { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
+        public string Salt { get; set; }
         public string Fname { get; set; }
         public string Lname { get; set; }
         public decimal? Phone { get; set; }
@@ -62,5 +68,6 @@ namespace CoOp19API.Domain.Models
         public string Address { get; set; }
         public string City { get; set; }
         public string State { get; set; }
+        public bool IsAdmin { get; set; }
     }
 }

@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
+      "BCrypt-Official/0.1.109": {
+        "type": "package",
+        "compile": {
+          "lib/BCrypt.Net.dll": {}
+        },
+        "runtime": {
+          "lib/BCrypt.Net.dll": {}
+        }
+      },
       "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
         "type": "package",
         "compile": {
@@ -1270,6 +1279,21 @@
     }
   },
   "libraries": {
+    "BCrypt-Official/0.1.109": {
+      "sha512": "4iTKqcCn1Eb3fsbbjhv9d9bwswCvEwXavwwo+XTrYAGCfP1YfVZGmRybKWLf2A6BDh+9bZn4zK6AnQaNcqtraA==",
+      "type": "package",
+      "path": "bcrypt-official/0.1.109",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "bcrypt-official.0.1.109.nupkg.sha512",
+        "bcrypt-official.nuspec",
+        "content/LICENSE.txt",
+        "lib/BCrypt.Net.XML",
+        "lib/BCrypt.Net.dll",
+        "lib/BCrypt.Net.pdb"
+      ]
+    },
     "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
       "sha512": "yuvf07qFWFqtK3P/MRkEKLhn5r2UbSpVueRziSqj0yJQIKFwG1pq9mOayK3zE5qZCTs0CbrwL9M6R8VwqyGy2w==",
       "type": "package",
@@ -4895,6 +4919,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "BCrypt-Official >= 0.1.109",
       "CoOp19API.DataAccess >= 1.0.0"
     ]
   },
@@ -4942,6 +4967,12 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "dependencies": {
+          "BCrypt-Official": {
+            "target": "Package",
+            "version": "[0.1.109, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",
@@ -4960,5 +4991,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'BCrypt-Official 0.1.109' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "BCrypt-Official",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
 }

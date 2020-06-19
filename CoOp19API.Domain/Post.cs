@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CoOp19API.Domain
 {
-    public class Post
+    public class Post : IPost
     {
         private readonly IInput input;
 

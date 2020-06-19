@@ -1,11 +1,12 @@
-﻿using CoOp19API.Domain;
+﻿using CoOp19API;
+using CoOp19API.Domain;
 using CoOp19API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace CoOp19API.Controller
+namespace CoOp19.App.Controllers
 {
     [ApiController]
     [Route("[controller]")]

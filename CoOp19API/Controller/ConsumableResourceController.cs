@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 using CoOp19API.Domain;
 using CoOp19API.Domain.Models;
+using CoOp19API;
 
-namespace CoOp19API.Controller
+namespace CoOp19.App.Controllers
 {
     [Route("[controller]")]
     [ApiController]
