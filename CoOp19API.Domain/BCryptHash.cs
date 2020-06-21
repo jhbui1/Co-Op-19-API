@@ -12,7 +12,7 @@ namespace CoOp19API.Domain
         public static bool VerifyUser(IEnumerable<UsersView> users,string pwd)
         {
             var user = users.First();
-            if(BCrypt.Net.BCrypt.Verify(pwd+user.Salt,user.Password))
+            if(BCrypt.Net.BCrypt.HashPassword(pwd,user.Salt)==user.Password)
             {
                 return true;
             }
@@ -20,6 +20,7 @@ namespace CoOp19API.Domain
             return false;
 
         }
+   
         public static string[] HashPassword(string password)
         {
             var random = new RNGCryptoServiceProvider();

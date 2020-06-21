@@ -3,8 +3,10 @@ using CoOp19API.Domain;
 using CoOp19API.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace CoOp19.App.Controllers
@@ -82,30 +84,22 @@ namespace CoOp19.App.Controllers
         }
 
         /// <summary>
-        /// returns the user with a specified username
+        /// returns the user with a specified username after verifying password
         /// </summary>
         /// <param name="city">name of city</param>
         /// <returns>querryed list</returns>
         [HttpGet("username")]
-        public async Task<ActionResult<IEnumerable<UsersView>>> GetActionUserName([FromServices] IGet get, string U)
+        public async Task<ActionResult<IEnumerable<UsersView>>> GetActionUserName([FromServices] IGet get)
         {
-            var re = Request;
-            var headers = re.Headers;
-            string token = string.Empty;
-            string pwd = string.Empty;
-            if (headers.ContainsKey("username"))
+
+            string[] authorization = HeaderDecode.DecodeHeader(Request);
+            string token = authorization[0], pwd = authorization[1];
+
+            log.LogInformation($"Querrying the database for a user with the username {token}");
+            var users = await get.Users(item => item.UserName.Trim() == token);
+            if(BCryptHash.VerifyUser(users, pwd))
             {
-                token = headers["username"].ToString();
-            }
-            if (headers.ContainsKey("password"))
-            {
-                pwd = headers["password"].ToString();
-            }
-            log.LogInformation($"Querrying the database for a user with the username {U}");
-            var users = await TryTask<IEnumerable<UsersView>>.Run(async () => Ok(await get.Users(item => item.UserName.Trim() == token)));
-            if(BCryptHash.VerifyUser(users.Value, pwd))
-            {
-                return users;
+                return new ActionResult<IEnumerable<UsersView>>(users); 
             }
             else
             {
