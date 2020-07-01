@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="BCrypt-Official" Version="0.1.109" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.46.0" />
   </ItemGroup>
 
   <ItemGroup>

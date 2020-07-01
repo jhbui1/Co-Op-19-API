@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using CoOp19API.Domain;
 using CoOp19API.Domain.Models;
 using CoOp19API;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CoOp19.App.Controllers
 {
@@ -79,6 +80,7 @@ namespace CoOp19.App.Controllers
         [ProducesResponseType(400)]
         public async Task<ActionResult<ConsumableViewResource>> PostAction([FromServices] IPost post, [FromBody] ConsumableViewResource consume)
         {
+            HeaderDecode.DecodeHeader(Request);
             log.LogInformation($"Adding {consume.Name} to consumable resources");
             return await TryTask<ConsumableViewResource>.Run(async () =>
             {

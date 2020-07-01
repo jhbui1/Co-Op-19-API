@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Google.Apis.Auth;
+using Microsoft.AspNetCore.Http;
 using System;
+using System.Net;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace CoOp19.App.Controllers
 {
@@ -12,7 +15,7 @@ namespace CoOp19.App.Controllers
         /// </summary>
         /// <param name="req">Header containing login info</param>
         /// <returns>decoded username and/or password in string array</returns>
-        public static string[] DecodeHeader(HttpRequest req)
+        public static async Task<string[]> DecodeHeader(HttpRequest req)
         {
             if(req.Headers.ContainsKey("Authorization"))
             {
@@ -23,8 +26,26 @@ namespace CoOp19.App.Controllers
                     string decodedString = Encoding.UTF8.GetString(data);
                     return decodedString.Split(":");
                 }
+                else if(auth[0] == "Google")
+                {
+                    try
+                    {
+                        var validPayload = await GoogleJsonWebSignature.ValidateAsync(auth[1]);
+                        return new string[] { validPayload.Email };
+                       
+                    }
+                    catch (Exception ex)
+                    {
+                        return null;
+                    }
+                }
             }
             return null;   
         }
+        private const string GoogleApiTokenInfoUrl = "https://www.googleapis.com/oauth2/v3/tokeninfo?id_token={0}";
+
+       
     }
+
+
 }

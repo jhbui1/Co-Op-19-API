@@ -92,7 +92,7 @@ namespace CoOp19.App.Controllers
         public async Task<ActionResult<IEnumerable<UsersView>>> GetActionUserName([FromServices] IGet get)
         {
 
-            string[] authorization = HeaderDecode.DecodeHeader(Request);
+            string[] authorization = await HeaderDecode.DecodeHeader(Request);
             string token = authorization[0], pwd = authorization[1];
 
             log.LogInformation($"Querrying the database for a user with the username {token}");
